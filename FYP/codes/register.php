@@ -41,7 +41,7 @@ session_start();
                         <div class="justify-content-right">
                         <li class="nav-item">
                         <?php
-                        if(isset($_SESSION['userId'])) {
+                        if(isset($_SESSION['userid'])) {
                         ?>
                             <a class="nav-link" href="logout.php"><span class="text-white">Logout</a></span>
                         <?php } else { ?>
@@ -52,7 +52,7 @@ session_start();
                 </div>
             </div>
         </nav>
-        <form id="form" method="post" action="doregister.php">
+        <form id="form" method="post" action="doregister.php" enctype="multipart/form-data">
             <h1 font-weight="bold">Register</h1>
             Username: <input id="idUsername" type="text" name="username" />
             <br/>
@@ -63,6 +63,8 @@ session_start();
             Address: <input id="idaddress" type="text" name="address" />
             <br/>
             Email: <input id="idEmail" type="email" name="email" />     
+            <br/><br/>
+            Profile Photo: <input type="file" name="profile_photo"/>
             <br/><br/>
             <center>
             <input id="submit" type="submit" value="Submit" />
