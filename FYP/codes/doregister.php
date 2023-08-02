@@ -1,22 +1,60 @@
 <?php
 session_start();
+include "dbFunctions.php";
+$pic_uploaded = 1;
+
 $theUsername= $_POST['username'];
 $thePassword = $_POST['password'];
-$theName = $_POST['name'];
-$theAddress = $_POST['address'];
 $theEmail = $_POST['email'];
 
-$add = true;
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "C203_hotelreviewDB";
+$image = time().$_FILES["profile_photo"]["name"];
+if(move_uploaded_file($_FILES['profile_photo']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/FYP/codes/uploads/'.$image))
+{
+    $target_file = $_SERVER['DOCUMENT_ROOT']. '/register/uploads/'.$image;
+    $imageFileType = strtoLower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $photoname = basename($_FILES['profile_photo']['name']);
+    $photo = time().$photoname;
+    /*
+    if($imageFileType != "jpg" && imageFileType != "jpeg" && $imageFileType != "png")
+        
+    {?> 
+      <script> 
+      alert("Please upload a photo with .jpg/.jpeg/.png extension");
+      </script>
+     *<?php
+     * }
+     * else if ($_FILES["profile_photo"]["size"] > 2000000)
+     * {?> 
+     * <script>
+     *  alert("your photo exceed the size of 2 MB");
+     * </script>
+      <?php }
+      else { */
+         // $pic_uploaded = 1;
+      //}
+     
+}
+if($pic_uploaded == 1)
 
-$link = mysqli_connect($host, $username, $password, $database);
+$link = mysqli_connect($db_host,$db_user,$db_pass,$db_name);
+      
+/*
+    if (isset($_FILES['profile_photo'])) {
+    $file_name = $_FILES['profile_photo']['name'];
+    $file_tmp = $_FILES['profile_photo']['tmp_name'];
+    $file_size = $_FILES['profile_photo']['size'];
+    $file_type = $_FILES['profile_photo']['type'];
     
-$query = "INSERT INTO users(username, password, name, address, email) VALUES ('$theUsername', SHA1('$thePassword')  , '$theName', '$theAddress', '$theEmail')";
+    
 
-$result = mysqli_query($link, $query) or die('Error querying database');
+    $upload_directory = "uploads/";
+    move_uploaded_file($file_tmp, $upload_directory . $file_name);
+    $profile_photo_path = $file_name;
+    } */
+    
+$query = "INSERT INTO users(username, password,  email, image) VALUES ('$theUsername', SHA1('$thePassword'),  '$theEmail', '$image')";
+
+$result = mysqli_query($link, $query) or die('Error querying database: ' . mysqli_error($link));
 
 if ($result){
     $add = true;
