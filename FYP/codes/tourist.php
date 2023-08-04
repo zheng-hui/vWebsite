@@ -76,7 +76,7 @@ while ($row = mysqli_fetch_array($result)) {
                                     const urlParams = new URLSearchParams(window.location.search);
                                     if (urlParams.has("type")) {
                                         const selectedLocation = urlParams.get("type");
-                                        document.write(decodeURI(selectedLocation));
+                                        document.write(selectedLocation);
                                     }					                                          
 				</script>
                                 <br></br>
