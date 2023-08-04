@@ -59,8 +59,6 @@ session_start();
             </div>
         </nav>
         <form id="form" method="post" action="doContact.php">
-                <!-- Include the CSRF token as a hidden input field -->
-            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
 
 
             <h1 font-weight="bold">Queries for Us</h1>
@@ -68,7 +66,7 @@ session_start();
             <br/>
             Email: <input id="idEmail" type="email" name="email" />     
             <br/>
-            Your Message: <br/>
+            Your Message: <br/> 
             <textarea id='questions' name="questions" rows="8" cols="50"></textarea>
             <br/><br/>
             <center>
