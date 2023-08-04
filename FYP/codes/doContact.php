@@ -79,14 +79,18 @@ else {
         <?php if($add ==true){ ?>
     <center>
         <form id='form' name='doContact' method='post'>
-            <h1 font-weight="bold">Query Successfully Submitted!</h1>
+            <h1 font-weight="bold">Your Query  is Successfully Submitted!</h1>
+            <p>Name: <?php echo $name; ?></p>
+            <p>Email: <?php echo $email; ?></p>       
+            <p>Query: <?php echo $questions; ?></p>
             <br/><br/>
             <h1 font-weight="bold">We will get back to you soon!</h1>
                 <a href="homepage.php">Back</a> to hotel page!
                 </form>
+    </center>
             <?php
         } else { ?>
-            Query failed submit.
+            Query failed to submit.
         <?php } ?>
     </body>
 </html>
