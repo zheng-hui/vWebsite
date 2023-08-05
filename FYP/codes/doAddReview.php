@@ -9,21 +9,7 @@ $rating = $_POST['rating'];
 
 $add = true;
 $query = "INSERT INTO reviews (hotelId, review, rating)
-          VALUES ('$hotelId','$review','$rating')";
-/*
-$stmt = mysqli_prepare($link, $query);
-mysqli_stmt_bind_param($stmt, "iss", $hotelId, $review, $rating);
-$result = mysqli_stmt_execute($stmt);
-if (!$result) {
-    $add = false;
-}
-
-mysqli_stmt_close($stmt);
-mysqli_close($link);
-*/
-//to improve security by adding prepared statements
-// we mitigate it when we doing source code review 
-// write python script to flag for pages with sql query but no prepared statement. 
+          VALUES ('$hotelId','$review','$rating')"; 
 
 $result = mysqli_query($link, $query) or die(mysqli_error($link));
 
