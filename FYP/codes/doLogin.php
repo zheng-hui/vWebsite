@@ -6,7 +6,6 @@ var_dump($_POST);
 $entered_username = $_POST['username'];
 $entered_password = $_POST['password'];
 
-//$login = true;
 
 $queryCheck = "SELECT * FROM users
           WHERE username='$entered_username'
@@ -20,14 +19,12 @@ if (mysqli_num_rows($resultCheck)) {
     $_SESSION['username'] = $row['username'];
     $_SESSION['password'] = $row['password'];
     $_SESSION['email'] = $row['email'];
-//    $login = true;
     
     if (isset($_POST['remember'])){
         setcookie("username", $row['username'], time()+3600*24*100);
     }
     
 } else {
-//    $login = false;
 }
 
 mysqli_close($link);
