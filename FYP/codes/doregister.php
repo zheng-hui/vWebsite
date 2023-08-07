@@ -14,44 +14,12 @@ if(move_uploaded_file($_FILES['profile_photo']['tmp_name'],$_SERVER['DOCUMENT_RO
     $imageFileType = strtoLower(pathinfo($target_file, PATHINFO_EXTENSION));
     $photoname = basename($_FILES['profile_photo']['name']);
     $photo = time().$photoname;
-    /*
-    if($imageFileType != "jpg" && imageFileType != "jpeg" && $imageFileType != "png")
-        
-    {?> 
-      <script> 
-      alert("Please upload a photo with .jpg/.jpeg/.png extension");
-      </script>
-     *<?php
-     * }
-     * else if ($_FILES["profile_photo"]["size"] > 2000000)
-     * {?> 
-     * <script>
-     *  alert("your photo exceed the size of 2 MB");
-     * </script>
-      <?php }
-      else { */
-         // $pic_uploaded = 1;
-      //}
-     
+
 }
 if($pic_uploaded == 1)
 
 $link = mysqli_connect($db_host,$db_user,$db_pass,$db_name);
-      
-/*
-    if (isset($_FILES['profile_photo'])) {
-    $file_name = $_FILES['profile_photo']['name'];
-    $file_tmp = $_FILES['profile_photo']['tmp_name'];
-    $file_size = $_FILES['profile_photo']['size'];
-    $file_type = $_FILES['profile_photo']['type'];
-    
-    
-
-    $upload_directory = "uploads/";
-    move_uploaded_file($file_tmp, $upload_directory . $file_name);
-    $profile_photo_path = $file_name;
-    } */
-    
+ss
 $query = "INSERT INTO users(username, password,  email, image) VALUES ('$theUsername', SHA1('$thePassword'),  '$theEmail', '$image')";
 
 $result = mysqli_query($link, $query) or die('Error querying database: ' . mysqli_error($link));
